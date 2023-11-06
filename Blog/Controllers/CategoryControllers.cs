@@ -102,7 +102,7 @@ namespace Blog.Controllers
                 }catch(DbUpdateException){
                     return StatusCode(500, "01EXC3 - Não foi possível excluir a categoria");
                 }catch(Exception ex){
-                    return StatusCode(500, "Falha interna");
+                    return StatusCode(500, "Falha interna - teste");
                 }
             }
     }
