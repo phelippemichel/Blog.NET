@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder
 .Services
 .AddControllers()
-.ConfigureApiBehaviorOptions(options => 
+.ConfigureApiBehaviorOptions(options =>
 {
   options.SuppressModelStateInvalidFilter = true;
 });

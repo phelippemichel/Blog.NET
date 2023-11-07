@@ -20,4 +20,4 @@ namespace Blog.Data
             modelBuilder.ApplyConfiguration(new PostMap());
         }
     }
-} 
+}
