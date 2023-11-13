@@ -15,19 +15,19 @@ LoadConfiguration(app);
 
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseStaticFiles();
 app.MapControllers();
+app.UseStaticFiles();
 app.Run();
 
 void LoadConfiguration(WebApplication app)
 {
-	Configuration.JwtKey = app.Configuration.GetValue<string>("JwtKey");
-	Configuration.ApiKeyName = app.Configuration.GetValue<string>("ApiKeyName");
-	Configuration.ApiKey = app.Configuration.GetValue<string>("ApiKey");
+    Configuration.JwtKey = app.Configuration.GetValue<string>("JwtKey");
+    Configuration.ApiKeyName = app.Configuration.GetValue<string>("ApiKeyName");
+    Configuration.ApiKey = app.Configuration.GetValue<string>("ApiKey");
 
-	var smtp = new Configuration.SmtpConfiguration();
-	app.Configuration.GetSection("Smtp").Bind(smtp);
-	Configuration.Smtp = smtp;
+    var smtp = new Configuration.SmtpConfiguration();
+    app.Configuration.GetSection("Smtp").Bind(smtp);
+    Configuration.Smtp = smtp;
 }
 
 void ConfigureAuthentication(WebApplicationBuilder builder)
@@ -49,15 +49,12 @@ void ConfigureAuthentication(WebApplicationBuilder builder)
     });
 }
 
-void ConfigureMvc(WebApplicationBuilder builder) 
+void ConfigureMvc(WebApplicationBuilder builder)
 {
     builder
-    .Services
-    .AddControllers()
-    .ConfigureApiBehaviorOptions(options =>
-    {
-        options.SuppressModelStateInvalidFilter = true;
-    });
+        .Services
+        .AddControllers()
+        .ConfigureApiBehaviorOptions(options => { options.SuppressModelStateInvalidFilter = true; });
 }
 
 void ConfigureServices(WebApplicationBuilder builder)
